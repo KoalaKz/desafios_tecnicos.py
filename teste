@@ -1,0 +1,71 @@
+INDICE = 13
+SOMA = 0
+K = 0
+
+while K < INDICE:
+    K += 1
+    SOMA += K
+
+print(f"O valor final de SOMA é: {SOMA}")
+
+def pertence_a_fibonacci(numero):
+    a, b = 0, 1
+    while b <= numero:
+        if b == numero:
+            return True
+        a, b = b, a + b
+    return False
+
+entrada_valida = False
+while not entrada_valida:
+    try:
+        numero_informado = int(input("Informe um número: "))
+        entrada_valida = True  # Sai do loop se a entrada for válida
+    except ValueError:
+        print("Por favor, insira um número inteiro válido.")
+
+if pertence_a_fibonacci(numero_informado):
+    print(f"O número {numero_informado} pertence à sequência de Fibonacci.")
+else:
+    print(f"O número {numero_informado} não pertence à sequência de Fibonacci.")
+
+import json
+
+dados_faturamento = {
+    "faturamento": [1000, 2000, 0, 500, 700, 0, 0, 800, 3000, 0, 1200]
+}
+
+faturamento = [valor for valor in dados_faturamento["faturamento"] if valor > 0]
+
+menor_valor = min(faturamento)
+maior_valor = max(faturamento)
+media_mensal = sum(faturamento) / len(faturamento)
+
+dias_acima_da_media = sum(1 for valor in faturamento if valor > media_mensal)
+
+print(f"Menor valor de faturamento: R${menor_valor:.2f}")
+print(f"Maior valor de faturamento: R${maior_valor:.2f}")
+print(f"Dias com faturamento acima da média: {dias_acima_da_media}")
+
+dados_estados = {
+    "SP": 67836.43,
+    "RJ": 36678.66,
+    "MG": 29229.88,
+    "ES": 27165.48,
+    "Outros": 19849.53
+}
+
+total_faturamento = sum(dados_estados.values())
+
+for estado, valor in dados_estados.items():
+    percentual = (valor / total_faturamento) * 100
+    print(f"{estado}: {percentual:.2f}%")
+
+def inverter_string(texto):
+    invertida = ""
+    for char in texto:
+        invertida = char + invertida
+    return invertida
+
+string_informada = input("Informe uma string: ")
+print(f"String invertida: {inverter_string(string_informada)}"
